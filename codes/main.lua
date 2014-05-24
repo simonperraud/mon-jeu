@@ -8,12 +8,16 @@ function love.load(arg)
 	require ("bullet") 
 	require ("enemy")
 
+
+
+
 	sticks = (love.joystick.getJoystickCount( )>=1)
 
 
 	playerimage = love.graphics.newImage("images/player.png")
 	playerspeed = 200
 	playerAlive = true
+
 
 	spawntime = 2
 	lastspawn = 0
@@ -28,9 +32,6 @@ function love.load(arg)
 
 	playerScore = 0
 	HighScore = 0
-
-	music = love.audio.play("Courtesy.mp3", "stream", true) -- stream and loop background music
-	
 end
 
 function newGame()
@@ -49,7 +50,6 @@ function newGame()
 	playerScore = 0
 	enemy = {}
 	bullet = {}
-
 end
 
 
@@ -84,12 +84,6 @@ function love.keypressed(key)
 
 	if key == "escape" then 
 		love.event.push("quit")
-	end	
-
-	if key == 's' then
-		love.audio.stop(music)
-	elseif key == 'd' then
-		love.audio.play(music)
 	end	
 end
 
@@ -173,9 +167,7 @@ function love.update(dt)
 
 	else
 		
-	end
-
-	love.audio.update ()	
+	end	
 end
 
 
@@ -195,6 +187,5 @@ function love.draw()
 		love.graphics.print("GAME OVER", 200,200)
 		love.graphics.print("SCORE : "..playerScore, 200, 220 )
 		love.graphics.print("HIGHSCORE : "..HighScore, 200, 240 )
-		playerAlive = false
 	end	
 end
